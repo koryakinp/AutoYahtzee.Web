@@ -1,0 +1,81 @@
+﻿@model AutoYahtzee.Business.ViewModels.IPageble
+
+<ul class="pagination pg-dark">
+
+    @if (Model.HasPrev)
+    {
+        <li class="page-item">
+            <a class="page-link" href="?page=@(Model.CurPage - 1)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+    }
+
+    @if (Model.TotalPages > 5)
+    {
+        if (Model.CurPage > Consts.MAX_PAGE_BUTTONS + 1)
+        {
+            <li class="page-item"><a href="?page=1" class="page-link">1</a></li>
+            if (Model.CurPage > Consts.MAX_PAGE_BUTTONS + 2)
+            {
+                <li class="page-item empty-page-item">...</li>
+            }
+        }
+
+        for (int i = Consts.MAX_PAGE_BUTTONS; i > 0; i--)
+        {
+            if (Model.CurPage - i > 0)
+            {
+                <li class="page-item">
+                    <a href="?page=@(Model.CurPage - i)" class="page-link">@(Model.CurPage - i)</a>
+                </li>
+            }
+        }
+
+        <li class="page-item active">
+            <a href="?page=@Model.CurPage" class="page-link text-light bg-dark">@Model.CurPage</a>
+        </li>
+
+        for (int i = 1; i < Consts.MAX_PAGE_BUTTONS + 1; i++)
+        {
+            if (Model.CurPage + i <= Model.TotalPages)
+            {
+                <li class="page-item">
+                    <a href="?page=@(Model.CurPage + i)" class="page-link">@(Model.CurPage + i)</a>
+                </li>
+            }
+        }
+
+        if (Model.CurPage + Consts.MAX_PAGE_BUTTONS + 1 <= Model.TotalPages)
+        {
+            if (Model.CurPage + Consts.MAX_PAGE_BUTTONS + 2 <= Model.TotalPages)
+            {
+                <li class="page-item empty-page-item">...</li>
+            }
+
+            <li class="page-item">
+                <a href="?page=@Model.TotalPages" class="page-link">@Model.TotalPages</a>
+            </li>
+        }
+    }
+    else
+    {
+        for (int i = 1; i < 6; i++)
+        {
+            <li class="page-item">
+                <a href="?page=@i" class="page-link">i</a>
+            </li>
+        }
+    }
+
+    @if (Model.HasNext)
+    {
+        <li class="page-item">
+            <a href="?page=@(Model.CurPage + 1)" class="page-link" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    }
+</ul>
