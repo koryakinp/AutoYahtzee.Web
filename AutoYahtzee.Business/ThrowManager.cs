@@ -35,6 +35,16 @@ namespace AutoYahtzee.Business
                 .Select(q => new YahtzeeDto(q.ToList(), q.Key))
                 .ToList();
 
+            for (int i = 5; i < 8; i++)
+            {
+                if(!dict.Any(q => q.NumberOfDices == i))
+                {
+                    dict.Add(new YahtzeeDto(new List<ThrowDto>(), i));
+                }
+            }
+
+            dict = dict.OrderBy(q => q.NumberOfDices).ToList();
+
             return new YahtzeeListViewModel(dict);
         }
 
