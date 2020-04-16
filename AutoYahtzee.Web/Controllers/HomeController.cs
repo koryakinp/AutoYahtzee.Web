@@ -27,5 +27,11 @@ namespace AutoYahtzee.Web.Controllers
             var vm = _throwManager.GetThrowDetails(id);
             return View(vm);
         }
+
+        [Route("/Contact")]
+        public IActionResult Index()
+        {
+            return View("Contact");
+        }
     }
 }

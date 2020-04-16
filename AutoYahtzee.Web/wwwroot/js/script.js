@@ -21,7 +21,7 @@ var d6 = [];
 var d7 = [];
 var d8 = [];
 
-for (var i = 0; i < 20; i++) {
+for (var i = 0; i < 21; i++) {
     y.push(i * 1000);
     d5.push((1 - Math.pow(1 - 1 / Math.pow(6, 4), y[i])) * 100);
     d6.push((1 - Math.pow(1 - 1 / Math.pow(6, 5), y[i])) * 100);
