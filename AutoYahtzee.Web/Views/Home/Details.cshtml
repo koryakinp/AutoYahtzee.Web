@@ -1,0 +1,72 @@
+﻿@model AutoYahtzee.Business.DTO.ThrowDto
+
+<style>
+    .download-roll a {
+        color: black !important;
+    }
+</style>
+
+<div class="row title-row">
+    <div class="col-md-12">
+        <h3 class="font-weight-normal">
+            Roll Details
+        </h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-7">
+        <video id="my-player"
+               class="video-js vjs-big-play-centered"
+               controls=""
+               preload="auto"
+               poster="@Model.ImageUrl"
+               data-setup='{"fluid":true}'>
+            <source src="@Model.VideoUrl" type="video/webm" />
+            <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a
+                web browser that
+                <a href="https://videojs.com/html5-video-support/" target="_blank">
+                    supports HTML5 video
+                </a>
+            </p>
+        </video>
+    </div>
+    <div class="col-md-5">
+        <ul class="list-group mb-4">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                    <h6 class="my-0">Roll Number</h6>
+                </div>
+                <span class="text-muted">@Model.RollNumber</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                    <h6 class="my-0">Date</h6>
+                </div>
+                <span class="text-muted">@Model.Date.ToString("MMM dd, yyy HH:mm")</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                    <h6 class="my-0">Outcome</h6>
+                </div>
+                <span class="text-muted">@Model.Result</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                    <h6 class="my-0">Number Of Dices</h6>
+                </div>
+                <span class="text-muted">@Model.Result.Length</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                    <h6 class="my-0">Download</h6>
+                </div>
+                <span class="download-roll text-muted">
+                    <a target="_blank" href="@Model.VideoUrl"><i class="fas fa-cloud-download-alt"></i></a>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+

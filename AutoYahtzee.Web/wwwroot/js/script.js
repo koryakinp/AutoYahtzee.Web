@@ -77,6 +77,20 @@ new Chart(document.getElementById("probability-chart"), {
         title: {
             display: true,
             text: 'Probability of rolling a Yahtzee'
+        },
+        scales: {
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Numer of rolls'
+                }
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Probability'
+                }
+            }]
         }
     }
 });

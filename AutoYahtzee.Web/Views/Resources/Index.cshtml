@@ -4,15 +4,6 @@
 }
 
 <style>
-    
-    .title-row {
-        margin-bottom: 30px;
-    }
-
-    .top-panel {
-        background: rgb(235,235,235);
-        background: linear-gradient(90deg, rgba(235,235,235,1) 0%, rgba(255,255,255,1) 50%, rgba(235,235,235,1) 100%);
-    }
 
     .btn:focus, .btn:active, .page-link:focus {
         outline: none !important;
@@ -30,41 +21,27 @@
     }
 </style>
 
-<div class="position-relative overflow-hidden p-3 p-md-5 text-center top-panel">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal">Auto Yahtzee</h1>
-        <p class="lead font-weight-normal">
-            The goal of the project is to roll a Yahtzee <sup data-toggle="tooltip" data-placement="top" title="A combination of an N of a kind thrown with N dices"><i class="fas fa-info"></i></sup> using automatic tools, it has no meaningful real-world application or purpose. Consider it as a form of artistic expression of the Author.
-        </p>
-        <a class="btn btn-outline-secondary" href="#">See Yahtzee</a>
+<div class="row title-row">
+    <div class="col-md-12">
+        <h3 class="font-weight-normal">
+            Statistics
+        </h3>
     </div>
 </div>
 
-<div class="album py-5 bg-light">
-    <div class="container">
-        <div class="row title-row">
-            <div class="col-md-12">
-                <h3 class="font-weight-normal">
-                    Statistics
-                </h3>
-            </div>
-        </div>
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            A probability <strong class="math-symbol">P</strong> of rolling a <strong class="math-symbol">d</strong>-dice Yahtzee within <strong class="math-symbol">r</strong> rolls can be expressed as:
+        </p>
+        <img class="mx-auto d-block formula-img" src="~/img/formula.gif" alt="Yahtzee probability formula" />
+    </div>
+</div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <p>
-                    A probability <strong class="math-symbol">P</strong> of rolling a <strong class="math-symbol">d</strong>-dice Yahtzee within <strong class="math-symbol">r</strong> rolls can be expressed as:
-                </p>
-                <img class="mx-auto d-block formula-img" src="~/img/formula.gif" alt="Yahtzee probability formula" />
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div style="height:500px;">
-                    <canvas id="probability-chart"></canvas>
-                </div>
-            </div>
+<div class="row">
+    <div class="col-md-12">
+        <div style="height:500px;">
+            <canvas id="probability-chart"></canvas>
         </div>
     </div>
 </div>

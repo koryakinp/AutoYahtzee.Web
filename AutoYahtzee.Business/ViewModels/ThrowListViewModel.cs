@@ -23,7 +23,8 @@ namespace AutoYahtzee.Business.ViewModels
                     Result = q.Result,
                     Date = q.DateCreated,
                     ImageUrl = q.ImageUrl,
-                    VideoUrl = q.VideoUrl
+                    VideoUrl = q.VideoUrl,
+                    RollNumber = q.ThrowNumber
                 })
                 .ToList();
 

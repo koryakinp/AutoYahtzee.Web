@@ -20,5 +20,12 @@ namespace AutoYahtzee.Web.Controllers
             var vm = _throwManager.GetThrowListViewModel(page);
             return View(vm);
         }
+
+        [Route("/Details/{id}")]
+        public IActionResult Details(Guid id)
+        {
+            var vm = _throwManager.GetThrowDetails(id);
+            return View(vm);
+        }
     }
 }

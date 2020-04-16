@@ -6,7 +6,7 @@ namespace AutoYahtzee.Business.DTO
     public class ThrowDto
     {
         private string _imageUrl;
-        public string _videoUrl;
+        private string _videoUrl;
 
         public Guid Id { get; set; }
         public string Result { get; set; }
@@ -33,5 +33,7 @@ namespace AutoYahtzee.Business.DTO
             }
         }
         public DateTime Date { get; set; }
+
+        public int RollNumber { get; set; }
     }
 }

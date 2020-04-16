@@ -48,8 +48,6 @@ namespace AutoYahtzee.Data
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getutcdate())");
 
-                entity.Property(e => e.ImageProcessedDate).HasColumnType("datetime");
-
                 entity.Property(e => e.ImageUrl).IsUnicode(false);
 
                 entity.Property(e => e.Result)
@@ -58,9 +56,9 @@ namespace AutoYahtzee.Data
 
                 entity.Property(e => e.ResultProcessedDate).HasColumnType("datetime");
 
-                entity.Property(e => e.VideoProcessedDate).HasColumnType("datetime");
-
                 entity.Property(e => e.VideoUrl).IsUnicode(false);
+
+                entity.Property(e => e.ThrowNumber).HasColumnType("INT");
 
                 entity.HasOne(d => d.Experiment)
                     .WithMany(p => p.Throws)

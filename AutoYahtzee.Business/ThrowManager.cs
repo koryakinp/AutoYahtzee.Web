@@ -2,6 +2,7 @@
 using AutoYahtzee.Business.ViewModels;
 using AutoYahtzee.Data;
 using AutoYahtzee.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -28,7 +29,8 @@ namespace AutoYahtzee.Business
                     Result = q.Result,
                     Date = q.DateCreated,
                     ImageUrl = q.ImageUrl,
-                    VideoUrl = q.VideoUrl
+                    VideoUrl = q.VideoUrl,
+                    RollNumber = q.ThrowNumber
                 })
                 .AsEnumerable()
                 .GroupBy(q => q.Result.Length)
@@ -59,6 +61,23 @@ namespace AutoYahtzee.Business
                 .Create(query, page, Consts.PAGE_SIZE);
 
             return new ThrowListViewModel(data);
+        }
+
+        public ThrowDto GetThrowDetails(Guid id)
+        {
+            return _ctx
+                .Throws
+                .Where(q => q.Id == id)
+                .Select(q => new ThrowDto
+                {
+                    Id = q.Id,
+                    Result = q.Result,
+                    Date = q.DateCreated,
+                    ImageUrl = q.ImageUrl,
+                    VideoUrl = q.VideoUrl,
+                    RollNumber = q.ThrowNumber
+                })
+                .FirstOrDefault();
         }
 
         private List<string> BuildYahtzeesCombinations()

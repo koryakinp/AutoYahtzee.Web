@@ -10,10 +10,8 @@ namespace AutoYahtzee.Data.Models
         public Guid ExperimentId { get; set; }
         public string VideoUrl { get; set; }
         public string ImageUrl { get; set; }
-        public DateTime? VideoProcessedDate { get; set; }
-        public DateTime? ImageProcessedDate { get; set; }
+        public int ThrowNumber { get; internal set; }
         public DateTime? ResultProcessedDate { get; set; }
-
         public virtual Experiment Experiment { get; set; }
     }
 }
