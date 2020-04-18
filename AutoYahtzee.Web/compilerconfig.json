@@ -1,0 +1,6 @@
+﻿[
+  {
+    "outputFile": "wwwroot/dst/main.min.css",
+    "inputFile": "src/main.scss"
+  }
+]

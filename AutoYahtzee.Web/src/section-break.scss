@@ -1,0 +1,46 @@
+﻿.sb {
+    float: left;
+    position: relative;
+    width: 100%;
+
+    small {
+        background: slategray;
+        color: white;
+        border-radius: .5rem;
+        box-shadow: 0 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.15);
+        font-size: 1.2rem;
+        left: 50%;
+        opacity: 0;
+        padding: 1rem;
+        position: absolute;
+        transform: translate(-50%, 0);
+        transition: opacity 1s ease-out, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 5;
+    }
+}
+
+.section-break-5 {
+    background-color: transparent;
+    border: 0;
+    border-top: 1px solid rgb(200, 200, 200);
+    display: block;
+    height: 0;
+    margin: 3rem auto 3rem;
+    text-align: center;
+    width: 50%;
+}
+
+section-break-5:before {
+    background-color: snow;
+    color: rgb(200, 200, 200);
+    content: 'j';
+    display: inline-block;
+    font-size: 1.6rem;
+    left: 50%;
+    letter-spacing: 0;
+    line-height: 1.6rem;
+    text-indent: 0;
+    text-rendering: geometricPrecision;
+    transform: translateY(-65%);
+    width: 15px;
+}

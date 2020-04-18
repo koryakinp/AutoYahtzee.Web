@@ -21,17 +21,29 @@ namespace AutoYahtzee.Web.Controllers
             return View(vm);
         }
 
-        [Route("/Details/{id}")]
+        [Route("/details/{id}")]
         public IActionResult Details(Guid id)
         {
             var vm = _throwManager.GetThrowDetails(id);
             return View(vm);
         }
 
-        [Route("/Contact")]
-        public IActionResult Index()
+        [Route("/contact")]
+        public IActionResult Contact()
         {
             return View("Contact");
+        }
+
+        [Route("/code")]
+        public IActionResult Code()
+        {
+            return View("Code");
+        }
+
+        [Route("/stats")]
+        public IActionResult Stats()
+        {
+            return View("Stats");
         }
     }
 }

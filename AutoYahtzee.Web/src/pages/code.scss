@@ -1,0 +1,39 @@
+﻿.code-page {
+    .repo-list {
+        list-style: none;
+        padding: 0px;
+
+        img {
+            width: 60px;
+            float: left;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .repo-description {
+        float: left;
+    }
+
+    .logo-wrapper {
+        float: left;
+        width: 100px;
+    }
+
+    .repo-list a {
+        color: black;
+
+        &:active, &:visited {
+            color: black;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

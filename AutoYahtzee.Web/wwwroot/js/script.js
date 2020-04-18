@@ -30,67 +30,70 @@ for (var i = 0; i < 21; i++) {
 }
 
 
-new Chart(document.getElementById("probability-chart"), {
-    type: 'line',
-    data: {
-        labels: y,
-        datasets: [
-            {
-                data: d5,
-                label: "5 Dices",
-                borderColor: "#3e95cd",
-                fill: false
-            }, {
-                data: d6,
-                label: "6 Dices",
-                borderColor: "#8e5ea2",
-                fill: false
-            }, {
-                data: d7,
-                label: "7 Dices",
-                borderColor: "#3cba9f",
-                fill: false
-            }, {
-                data: d8,
-                label: "8 Dices",
-                borderColor: "#e8c3b9",
-                fill: false
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        tooltips: {
-            callbacks: {
-                label: function (tooltipItem, data) {
-                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+var chartEL = document.getElementById("probability-chart");
+if (chartEL) {
+    new Chart(chartEL.getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: y,
+            datasets: [
+                {
+                    data: d5,
+                    label: "5 Dices",
+                    borderColor: "#3e95cd",
+                    fill: false
+                }, {
+                    data: d6,
+                    label: "6 Dices",
+                    borderColor: "#8e5ea2",
+                    fill: false
+                }, {
+                    data: d7,
+                    label: "7 Dices",
+                    borderColor: "#3cba9f",
+                    fill: false
+                }, {
+                    data: d8,
+                    label: "8 Dices",
+                    borderColor: "#e8c3b9",
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem, data) {
+                        var label = data.datasets[tooltipItem.datasetIndex].label || '';
 
-                    if (label) {
-                        label += ': ';
+                        if (label) {
+                            label += ': ';
+                        }
+                        label += tooltipItem.yLabel.toFixed(2);
+                        return label;
                     }
-                    label += tooltipItem.yLabel.toFixed(2);
-                    return label;
                 }
+            },
+            title: {
+                display: true,
+                text: 'Probability of rolling a Yahtzee'
+            },
+            scales: {
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Numer of rolls'
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Probability'
+                    }
+                }]
             }
-        },
-        title: {
-            display: true,
-            text: 'Probability of rolling a Yahtzee'
-        },
-        scales: {
-            xAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Numer of rolls'
-                }
-            }],
-            yAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Probability'
-                }
-            }]
         }
-    }
-});
+    });
+}

@@ -1,0 +1,16 @@
+﻿.resources-page {
+    .btn:focus, .btn:active, .page-link:focus {
+        outline: none !important;
+        box-shadow: none;
+    }
+
+    .math-symbol {
+        font-family: "Georgia";
+        font-style: italic
+    }
+
+    .formula-img {
+        width: 200px;
+        margin: 40px;
+    }
+}
