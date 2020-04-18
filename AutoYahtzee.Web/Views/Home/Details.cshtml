@@ -1,5 +1,9 @@
 ﻿@model AutoYahtzee.Business.DTO.ThrowDto
 
+@{
+    ViewData["Title"] = $"Roll #{Model.RollNumber} Details";
+}
+
 <div class="details-page">
     <div class="row title-row">
         <div class="col-md-12">
@@ -12,11 +16,11 @@
     <div class="row">
         <div class="col-md-7">
             <video id="my-player"
-                    class="video-js vjs-big-play-centered"
-                    controls=""
-                    preload="auto"
-                    poster="@Model.ImageUrl"
-                    data-setup='{"fluid":true}'>
+                   class="video-js vjs-big-play-centered"
+                   controls=""
+                   preload="auto"
+                   poster="@Model.ImageUrl"
+                   data-setup='{"fluid":true}'>
                 <source src="@Model.VideoUrl" type="video/webm" />
                 <p class="vjs-no-js">
                     To view this video please enable JavaScript, and consider upgrading to a
