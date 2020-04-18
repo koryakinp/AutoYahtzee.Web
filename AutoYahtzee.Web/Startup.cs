@@ -1,4 +1,5 @@
 using AutoYahtzee.Business;
+using AutoYahtzee.Business.DTO;
 using AutoYahtzee.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,7 +31,11 @@ namespace AutoYahtzee.Web
             services.AddDbContext<AutoYahtzeeContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
 
+            IConfigurationSection sec = Configuration.GetSection("SendGridConfigOptions");
+            services.Configure<SendGridConfigOptions>(sec);
+
             services.AddTransient<ThrowManager>();
+            services.AddTransient<SendGridManager>();
 
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
@@ -43,6 +48,12 @@ namespace AutoYahtzee.Web
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseStatusCodePagesWithReExecute("/error", "?code={0}");
+            }
+
+            
 
             app.UseStaticFiles();
 
@@ -50,6 +61,7 @@ namespace AutoYahtzee.Web
             {
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }

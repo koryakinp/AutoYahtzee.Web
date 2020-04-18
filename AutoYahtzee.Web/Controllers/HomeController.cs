@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoYahtzee.Business;
-using AutoYahtzee.Data;
+using AutoYahtzee.Business.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AutoYahtzee.Web.Controllers
@@ -11,9 +9,11 @@ namespace AutoYahtzee.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ThrowManager _throwManager;
-        public HomeController(ThrowManager throwManager)
+        private readonly SendGridManager _sendgridManager;
+        public HomeController(ThrowManager throwManager, SendGridManager sendgridManager)
         {
             _throwManager = throwManager;
+            _sendgridManager = sendgridManager;
         }
         public IActionResult Index([FromQuery]int page = 1)
         {
@@ -32,6 +32,24 @@ namespace AutoYahtzee.Web.Controllers
         public IActionResult Contact()
         {
             return View("Contact");
+        }
+
+        [Route("/contact")]
+        [HttpPost]
+        public async Task<IActionResult> Contact(ContactEntry contactEntry)
+        {
+            string result = String.Empty;
+
+            if(ModelState.IsValid)
+            {
+                result = await _sendgridManager.SendEmail(contactEntry) ? "SUCCESS" : "FAIL";  
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+            return View("Contact", result);
         }
 
         [Route("/code")]
