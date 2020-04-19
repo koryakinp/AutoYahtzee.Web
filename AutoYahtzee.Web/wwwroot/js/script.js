@@ -116,8 +116,11 @@ toastr.options = {
     "hideMethod": "fadeOut"
 }
 
-if (contactFormResponse == 'SUCCESS') {
-    toastr.success('Thank you for contacting me', 'Thank you!')
-} else if (contactFormResponse == 'FAIL') {
-    toastr.error('An error occured. Try again later.', 'An error occured')
+if (document.getElementById('contact-form')) {
+    if (contactFormResponse == 'SUCCESS') {
+        toastr.success('Thank you for contacting me', 'Thank you!')
+    } else if (contactFormResponse == 'FAIL') {
+        toastr.error('An error occured. Try again later.', 'An error occured')
+    }
 }
+

@@ -63,5 +63,17 @@ namespace AutoYahtzee.Web.Controllers
         {
             return View("Stats");
         }
+
+        [Route("/hardware")]
+        public IActionResult Hardware()
+        {
+            return View("Hardware");
+        }
+
+        [Route("/about")]
+        public IActionResult About()
+        {
+            return View("About");
+        }
     }
 }

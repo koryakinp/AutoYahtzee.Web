@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Hardware";
+}
+
+<div class="hardware-page">
+    <div class="row title-row">
+        <div class="col-md-12">
+            <h2 class="font-weight-normal">
+                Hardware
+            </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>AutoYahtzee 1.0</h3>
+            <p>Capacity <strong>100</strong> throws per hour</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card box-shadow video-wrapper">
+                <video id="my-player"
+                       class="video-js vjs-big-play-centered"
+                       controls=""
+                       preload="auto"
+                       data-setup='{"fluid":true}'>
+                    <source src="~/video/robot.webm" type="video/webm" />
+                    <p class="vjs-no-js">
+                        To view this video please enable JavaScript, and consider upgrading to a
+                        web browser that
+                        <a href="https://videojs.com/html5-video-support/" target="_blank">
+                            supports HTML5 video
+                        </a>
+                    </p>
+                </video>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <ul class="list-group mb-4">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Raspberry PI 4</h6>
+                    </div>
+                    <span class="text-muted">with Camera Module</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Arduino UNO</h6>
+                    </div>
+                    <span class="text-muted">with Expansion Board</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Planetary Gear Motor</h6>
+                    </div>
+                    <span class="text-muted">313 RPM</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Planetary Gear Motor</h6>
+                    </div>
+                    <span class="text-muted">195 RPM</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Servo</h6>
+                    </div>
+                    <span class="text-muted">D625MW</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">LEDs</h6>
+                    </div>
+                    <span class="text-muted">3V</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Limit Switches</h6>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Actobotics Components</h6>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

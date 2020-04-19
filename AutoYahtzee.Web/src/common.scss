@@ -114,3 +114,21 @@
 .video-js.vjs-default-skin.vjs-paused .vjs-big-play-button {
     display: block !important;
 }
+
+.social-links {
+    justify-content: center;
+    list-style: none;
+    display: flex;
+    flex-flow: row;
+    padding-left: 0;
+    margin-top: 30px;
+    margin-bottom: 40px;
+
+    li {
+        width: 30px;
+
+        a {
+            color: gray;
+        }
+    }
+}
