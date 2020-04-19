@@ -1,19 +1,13 @@
 ﻿@model System.String
 @{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = Consts.PageTitle.ContactMe;
 }
 
 <script>
     var contactFormResponse = '@Model';
 </script>
 
-<div class="row title-row">
-    <div class="col-md-12">
-        <h2 class="font-weight-normal">
-            Contact Me
-        </h2>
-    </div>
-</div>
+<partial name="PageTitle" for="@Consts.PageTitle.ContactMe" />
 
 <div class="row">
     <div class="col-md-12">

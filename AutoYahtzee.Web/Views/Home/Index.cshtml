@@ -1,99 +1,52 @@
 ﻿@model AutoYahtzee.Business.ViewModels.ThrowListViewModel
 @{
-    ViewData["Title"] = "Rolls";
+    ViewData["Title"] = Consts.PageTitle.LatestRolls;
 }
 
-<style>
-    .page-item.active a {
-        border-color: black !important;
-    }
+<div class="latest-rolls">
+    <partial name="PageTitle" for="@Consts.PageTitle.LatestRolls" />
+    <partial name="Pagination" for="@Model" />
+    <div class="row">
 
-    .page-item a {
-        color: black;
-    }
+        @foreach (var throww in Model.Throws)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
 
-    .empty-page-item {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
+                    <div class="card-header">
+                        <h5>Roll <span class="roll-number">#@throww.RollNumber</span></h5>
+                    </div>
 
-    .page-item a {
-        color: inherit;
-        text-decoration: inherit;
-    }
+                    <div class="card-body">
+                        <video id="my-player"
+                               class="video-js vjs-big-play-centered"
+                               controls=""
+                               preload="auto"
+                               poster="@throww.ImageUrl"
+                               data-setup='{"fluid":true}'>
+                            <source src="@throww.VideoUrl" type="video/webm" />
+                            <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a
+                                web browser that
+                                <a href="https://videojs.com/html5-video-support/" target="_blank">
+                                    supports HTML5 video
+                                </a>
+                            </p>
+                        </video>
+                    </div>
 
-    .page-item a:link {
-        color: inherit;
-        text-decoration: inherit;
-    }
-
-    .page-item a:hover {
-        color: inherit;
-        text-decoration: inherit;
-    }
-
-    .btn:focus, .btn:active, .page-link:focus {
-        outline: none !important;
-        box-shadow: none;
-    }
-
-    .roll-number {
-        font-weight: normal;
-        float: right;
-    }
-</style>
-
-
-<div class="row title-row">
-    <div class="col-md-12">
-        <h2 class="font-weight-normal">
-            Latest Rolls
-        </h2>
-    </div>
-</div>
-
-<partial name="Pagination" for="@Model"/>
-
-<div class="row">
-
-    @foreach (var throww in Model.Throws)
-    {
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-
-                <div class="card-header">
-                    <h5>Roll <span class="roll-number">#@throww.RollNumber</span></h5>
-                </div>
-
-                <div class="card-body">
-                    <video id="my-player"
-                            class="video-js vjs-big-play-centered"
-                            controls=""
-                            preload="auto"
-                            poster="@throww.ImageUrl"
-                            data-setup='{"fluid":true}'>
-                        <source src="@throww.VideoUrl" type="video/webm" />
-                        <p class="vjs-no-js">
-                            To view this video please enable JavaScript, and consider upgrading to a
-                            web browser that
-                            <a href="https://videojs.com/html5-video-support/" target="_blank">
-                                supports HTML5 video
-                            </a>
-                        </p>
-                    </video>
-                </div>
-
-                <div class="card-footer">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <a href="/Details/@throww.Id" type="button" class="btn btn-sm btn-outline-secondary">Details</a>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="/Details/@throww.Id" type="button" class="btn btn-sm btn-outline-secondary">Details</a>
+                            </div>
+                            <small class="text-muted time-ago-label" data-timeago="@throww.Date.ToString("yyyy-MM-dd HH:mm:ss")"></small>
                         </div>
-                        <small class="text-muted time-ago-label" data-timeago="@throww.Date.ToString("yyyy-MM-dd HH:mm:ss")"></small>
                     </div>
                 </div>
             </div>
-        </div>
-    }
-</div>
+        }
+    </div>
 
-<partial name="Pagination" for="@Model" />
+    <partial name="Pagination" for="@Model" />
+</div>

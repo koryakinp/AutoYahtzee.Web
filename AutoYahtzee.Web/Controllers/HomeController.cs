@@ -70,10 +70,17 @@ namespace AutoYahtzee.Web.Controllers
             return View("Hardware");
         }
 
-        [Route("/about")]
+        [Route("/author")]
+        public IActionResult Author()
+        {
+            return View("Author");
+        }
+
+        [Route("/project")]
         public IActionResult About()
         {
-            return View("About");
+            var vm = _throwManager.GetAboutViewModel();
+            return View("Project", vm);
         }
     }
 }

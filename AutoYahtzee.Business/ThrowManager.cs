@@ -16,6 +16,27 @@ namespace AutoYahtzee.Business
             _ctx = ctx;
         }
 
+        public AboutViewModel GetAboutViewModel()
+        {
+            List<string> yahtzees = BuildYahtzeesCombinations();
+
+            var count = _ctx
+                .Throws
+                .Where(q => yahtzees.Contains(q.Result))
+                .Count();
+
+            var attempts = _ctx
+                .Throws
+                .Count();
+
+            return new AboutViewModel
+            {
+                NumberOfAttempts = attempts,
+                NumberOfYahtzees = count
+            };
+        }
+
+
         public YahtzeeListViewModel GetYahtzeeListViewModel()
         {
             List<string> yahtzees = BuildYahtzeesCombinations();

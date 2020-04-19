@@ -99,7 +99,7 @@
 }
 
 .title-row {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .top-panel {
@@ -130,5 +130,12 @@
         a {
             color: gray;
         }
+    }
+}
+
+.header-hr-wrapper {
+    hr {
+        margin: 0;
+        width: 100%;
     }
 }

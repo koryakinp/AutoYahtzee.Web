@@ -1,0 +1,39 @@
+﻿.latest-rolls {
+    .page-item.active a {
+        border-color: black !important;
+    }
+
+    .page-item a {
+        color: black;
+    }
+
+    .empty-page-item {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .page-item a {
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+    .page-item a:link {
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+    .page-item a:hover {
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+    .btn:focus, .btn:active, .page-link:focus {
+        outline: none !important;
+        box-shadow: none;
+    }
+
+    .roll-number {
+        font-weight: normal;
+        float: right;
+    }
+}
