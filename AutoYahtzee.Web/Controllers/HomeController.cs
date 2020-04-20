@@ -52,7 +52,7 @@ namespace AutoYahtzee.Web.Controllers
             return View("Contact", result);
         }
 
-        [Route("/code")]
+        [Route("/software")]
         public IActionResult Code()
         {
             return View("Code");

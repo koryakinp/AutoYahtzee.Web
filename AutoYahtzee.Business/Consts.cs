@@ -10,7 +10,7 @@
 
         public class PageTitle
         {
-            public static string About { get; private set; } = "About";
+            public static string Project { get; private set; } = "Project";
             public static string LatestRolls { get; private set; } = "Latest Rolls";
             public static string Code { get; private set; } = "Code";
             public static string Hardware { get; private set; } = "Hardware";

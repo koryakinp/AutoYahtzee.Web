@@ -1,0 +1,54 @@
+﻿@model AutoYahtzee.Business.ViewModels.AboutViewModel
+@{
+    ViewData["Title"] = Consts.PageTitle.Project;
+}
+
+    <div class="about-page">
+        <partial name="PageTitle" for="@Consts.PageTitle.Project" />
+
+        <div class="row project-video-wrapper">
+            <div class="col-md-12">
+                <p>The goal of the project is to roll a Yahtzee using automatic tools. As the number of dices increases it becomes <a href="/stats">extremely unlikely</a> to roll one. So far I <a href="/yahtzee">have done</a> it @Model.NumberOfYahtzees times in @Model.NumberOfAttempts attempts:</p>
+                <ul>
+                    @foreach (var summary in Model.YahtzeeSummary)
+                    {
+                        @if (@summary.NumberOfYahtzee == 1)
+                        {
+                            <li>@summary.NumberOfYahtzee time with @summary.NumberOfDices dices</li>
+                        }
+                        else
+                        {
+                            <li>@summary.NumberOfYahtzee times with @summary.NumberOfDices dices</li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card box-shadow video-wrapper">
+                    <video id="my-player"
+                           class="video-js vjs-big-play-centered"
+                           controls=""
+                           preload="auto"
+                           data-setup='{"fluid":true}'>
+                        <source src="~/video/robot.webm" type="video/webm" />
+                        <p class="vjs-no-js">
+                            To view this video please enable JavaScript, and consider upgrading to a
+                            web browser that
+                            <a href="https://videojs.com/html5-video-support/" target="_blank">
+                                supports HTML5 video
+                            </a>
+                        </p>
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="row sections-spacer">
+            <div class="col-md-12">
+                <p>If you are interested in technical details, please visit <a href="/hardware">hardware</a> and <a href="/code">software</a> pages.</p>
+            </div>
+        </div>
+    </div>

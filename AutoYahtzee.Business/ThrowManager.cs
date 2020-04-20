@@ -29,10 +29,24 @@ namespace AutoYahtzee.Business
                 .Throws
                 .Count();
 
+            var summary = _ctx
+                .Throws
+                .Where(q => yahtzees.Contains(q.Result))
+                .AsEnumerable()
+                .GroupBy(q => q.Result.Length)
+                .Select(q => new YahtzeeSummary
+                {
+                    NumberOfDices = q.Key,
+                    NumberOfYahtzee = q.Count()
+                })
+                .OrderBy(q => q.NumberOfDices)
+                .ToList();
+
             return new AboutViewModel
             {
                 NumberOfAttempts = attempts,
-                NumberOfYahtzees = count
+                NumberOfYahtzees = count,
+                YahtzeeSummary = summary
             };
         }
 
