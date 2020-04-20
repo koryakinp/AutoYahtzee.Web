@@ -139,3 +139,13 @@
         width: 100%;
     }
 }
+
+footer a {
+    color: darkgray;
+    transition: ease-in-out color .15s;
+}
+
+footer a:hover {
+    text-decoration: none; 
+    color: black !important;
+}
