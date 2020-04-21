@@ -1,0 +1,33 @@
+[
+  {
+    "outputFileName": "wwwroot/dst/site.min.css",
+    "inputFiles": [
+      "wwwroot/lib/font-awesome/css/all.min.css",
+      "wwwroot/lib/bootstrap/css/bootstrap.min.css",
+      "wwwroot/lib/videojs/video-js.min.css",
+      "wwwroot/lib/chartjs/Chart.min.css",
+      "wwwroot/lib/toastr/toastr.min.css",
+      "wwwroot/dst/main.min.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles.min.js",
+    "inputFiles": [
+      "wwwroot/lib/videojs/video.min.js",
+      "wwwroot/lib/jquery/jquery.min.js",
+      "wwwroot/lib/popper/popper.min.js",
+      "wwwroot/lib/bootstrap/js/bootstrap.min.js",
+      "wwwroot/lib/holder/holder.min.js",
+      "wwwroot/lib/momentjs/moment.min.js",
+      "wwwroot/lib/chartjs/Chart.min.js",
+      "wwwroot/lib/toastr/toastr.min.js",
+      "wwwroot/js/contcat-form.js",
+      "wwwroot/js/script.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]
