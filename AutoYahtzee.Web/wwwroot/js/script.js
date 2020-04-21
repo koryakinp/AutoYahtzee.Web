@@ -39,22 +39,22 @@ if (chartEL) {
             datasets: [
                 {
                     data: d5,
-                    label: "5 Dices",
+                    label: "5 Dice",
                     borderColor: "#3e95cd",
                     fill: false
                 }, {
                     data: d6,
-                    label: "6 Dices",
+                    label: "6 Dice",
                     borderColor: "#8e5ea2",
                     fill: false
                 }, {
                     data: d7,
-                    label: "7 Dices",
+                    label: "7 Dice",
                     borderColor: "#3cba9f",
                     fill: false
                 }, {
                     data: d8,
-                    label: "8 Dices",
+                    label: "8 Dice",
                     borderColor: "#e8c3b9",
                     fill: false
                 }
