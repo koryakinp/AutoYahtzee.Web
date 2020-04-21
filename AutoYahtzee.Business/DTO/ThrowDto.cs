@@ -21,17 +21,30 @@ namespace AutoYahtzee.Business.DTO
                 _imageUrl = value;
             }
         }
-        public string VideoUrl
+        public string VideoUrlWebm
         {
             get
             {
-                return $"https://{STORAGE_ACCOUNT}.blob.core.windows.net/{VIDEO_CONTAINER}/{_videoUrl}";
+                return $"https://{STORAGE_ACCOUNT}.blob.core.windows.net/{VIDEO_CONTAINER_WEBM}/{_videoUrl}";
             }
             set
             {
                 _videoUrl = value;
             }
         }
+
+        public string VideoUrlMp4
+        {
+            get
+            {
+                return $"https://{STORAGE_ACCOUNT}.blob.core.windows.net/{VIDEO_CONTAINER_MP4}/{_videoUrl.Replace(".webm", ".mp4")}";
+            }
+            set
+            {
+                _videoUrl = value;
+            }
+        }
+
         public DateTime Date { get; set; }
 
         public int RollNumber { get; set; }

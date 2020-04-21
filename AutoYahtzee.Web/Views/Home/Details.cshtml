@@ -15,7 +15,8 @@
                    preload="auto"
                    poster="@Model.ImageUrl"
                    data-setup='{"fluid":true}'>
-                <source src="@Model.VideoUrl" type="video/webm" />
+                <source src="@Model.VideoUrlWebm" type="video/webm" />
+                <source src="@Model.VideoUrlMp4" type="video/mp4" />
                 <p class="vjs-no-js">
                     To view this video please enable JavaScript, and consider upgrading to a
                     web browser that
@@ -56,7 +57,7 @@
                         <h6 class="my-0">Download</h6>
                     </div>
                     <span class="download-roll text-muted">
-                        <a target="_blank" href="@Model.VideoUrl"><i class="fas fa-cloud-download-alt"></i></a>
+                        <a target="_blank" href="@Model.VideoUrlWebm"><i class="fas fa-cloud-download-alt"></i></a>
                     </span>
                 </li>
             </ul>

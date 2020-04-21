@@ -5,7 +5,8 @@
         public const int PAGE_SIZE = 9;
         public const int MAX_PAGE_BUTTONS = 3;
         public const string STORAGE_ACCOUNT = "autoyahtzeefunctions";
-        public const string VIDEO_CONTAINER = "autoyahtzee-processed-video-container";
+        public const string VIDEO_CONTAINER_WEBM = "autoyahtzee-processed-video-container";
+        public const string VIDEO_CONTAINER_MP4 = "autoyahtzee-processed-video-container-mp4";
         public const string IMAGE_CONTAINER = "autoyahtzee-processed-image-container";
 
         public class PageTitle
