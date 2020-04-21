@@ -8,17 +8,17 @@
 
         <div class="row project-video-wrapper">
             <div class="col-md-12">
-                <p>The goal of the project is to roll a Yahtzee using automatic tools. As the number of dices increases it becomes <a href="/stats">extremely unlikely</a> to roll one. So far I <a href="/yahtzee">have done</a> it @Model.NumberOfYahtzees times in @Model.NumberOfAttempts attempts:</p>
+                <p>The goal of the project is to roll Yahtzees using an automatic dice rolling machine. As the number of dice increases, it becomes <a href="/stats">increasingly unlikely</a> that a Yahtzee will be rolled. So far, the machine <a href="/yahtzee">has succeeded</a> 4 times in 11135 attempts:</p>
                 <ul>
                     @foreach (var summary in Model.YahtzeeSummary)
                     {
                         @if (@summary.NumberOfYahtzee == 1)
                         {
-                            <li>@summary.NumberOfYahtzee time with @summary.NumberOfDices dices</li>
+                            <li>@summary.NumberOfYahtzee time with @summary.NumberOfDices dice</li>
                         }
                         else
                         {
-                            <li>@summary.NumberOfYahtzee times with @summary.NumberOfDices dices</li>
+                            <li>@summary.NumberOfYahtzee times with @summary.NumberOfDices dice</li>
                         }
                     }
                 </ul>
