@@ -122,7 +122,6 @@
     flex-flow: row;
     padding-left: 0;
     margin-top: 30px;
-    margin-bottom: 40px;
 
     li {
         width: 30px;
@@ -133,6 +132,15 @@
     }
 }
 
+.copyright-wrapper {
+    justify-content: center;
+    list-style: none;
+    display: flex;
+    flex-flow: row;
+    padding-left: 0;
+    margin-bottom: 30px;
+}
+
 .header-hr-wrapper {
     hr {
         margin: 0;
@@ -140,9 +148,24 @@
     }
 }
 
-footer a {
-    color: darkgray;
-    transition: ease-in-out color .15s;
+footer {
+
+    a {
+        color: darkgray;
+        transition: ease-in-out color .15s;
+    }
+
+    .footer-menu-items-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .footer-logo-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 footer a:hover {
