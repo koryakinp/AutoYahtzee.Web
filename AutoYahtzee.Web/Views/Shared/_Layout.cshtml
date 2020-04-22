@@ -31,16 +31,41 @@
 <body>
 
     <nav class="site-header sticky-top py-1">
-        <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-2" href="/">
-                <img class="logo-image" src="~/img/icon.png" width="36" height="36" />
-            </a>
-            <div class="top-nav-items-container">
-                <a class="top-nav-item" href="/">Rolls</a>
-                <a class="top-nav-item" href="/yahtzee">Yahtzees</a>
-                <a class="top-nav-item" href="/stats">Stats</a>
-                <a class="top-nav-item" href="/contact">Contact</a>
-                <a class="top-nav-item" href="/project">Project</a>
+
+        <div class="d-none d-md-block">
+            <div class="container d-flex flex-column flex-md-row justify-content-between">
+                <a class="py-2" href="/">
+                    <img class="logo-image" src="~/img/icon.png" width="36" height="36" />
+                </a>
+                <div class="top-nav-items-container">
+                    <a class="top-nav-item" href="/">Rolls</a>
+                    <a class="top-nav-item" href="/yahtzee">Yahtzees</a>
+                    <a class="top-nav-item" href="/stats">Stats</a>
+                    <a class="top-nav-item" href="/contact">Contact</a>
+                    <a class="top-nav-item" href="/project">Project</a>
+                </div>
+            </div>
+        </div>
+        <div class="d-block d-md-none">
+            <div class="pos-f-t">
+                <nav class="navbar">
+                    <div class="hamburger-button-wrapper">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fas fa-2x fa-bars hamburger-button"></i>
+                        </button>
+                    </div>
+                </nav>
+                <div class="collapse" id="navbarToggleExternalContent">
+                    <div class="mobile-menu-links-container">
+                        <ul class="mobile-menu-wrapper">
+                            <li><a class="top-nav-item" href="/">Rolls</a></li>
+                            <li><a class="top-nav-item" href="/yahtzee">Yahtzees</a></li>
+                            <li><a class="top-nav-item" href="/stats">Stats</a></li>
+                            <li><a class="top-nav-item" href="/contact">Contact</a></li>
+                            <li><a class="top-nav-item" href="/project">Project</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
