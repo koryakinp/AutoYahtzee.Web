@@ -2,6 +2,7 @@
 using AutoYahtzee.Business.ViewModels;
 using AutoYahtzee.Data;
 using AutoYahtzee.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,59 +19,49 @@ namespace AutoYahtzee.Business
 
         public AboutViewModel GetAboutViewModel()
         {
-            List<string> yahtzees = BuildYahtzeesCombinations();
-
-            var count = _ctx
-                .Throws
-                .Where(q => yahtzees.Contains(q.Result))
-                .Count();
-
-            var attempts = _ctx
-                .Throws
-                .Count();
-
-            var summary = _ctx
-                .Throws
-                .Where(q => yahtzees.Contains(q.Result))
-                .AsEnumerable()
-                .GroupBy(q => q.Result.Length)
-                .Select(q => new YahtzeeSummary
+            List<YahtzeeDto> dict = _ctx
+                .Set<YahtzeeResult>()
+                .FromSqlRaw("EXEC [dbo].[GetYahtzees]")
+                .ToList()
+                .GroupBy(q => q.ThrowId)
+                .GroupBy(q => q.Count())
+                .Select(q => new YahtzeeDto(q.Select(w => new ThrowDto
                 {
-                    NumberOfDices = q.Key,
-                    NumberOfYahtzee = q.Count()
-                })
-                .OrderBy(q => q.NumberOfDices)
+                    Result = string.Join("", w.Select(e => e.Prediction.ToString())),
+                    Date = w.First().DateCreated,
+                    Id = w.First().ThrowId
+                }).ToList(), q.Key))
                 .ToList();
 
             return new AboutViewModel
             {
-                NumberOfAttempts = attempts,
-                NumberOfYahtzees = count,
-                YahtzeeSummary = summary
+                NumberOfAttempts = _ctx.Throws.Count(),
+                NumberOfYahtzees = dict.Select(w => w.Throws.Count).Sum(),
+                YahtzeeSummary = dict
+                    .Select(w => new YahtzeeSummary
+                    {
+                        NumberOfDices = w.NumberOfDices,
+                        NumberOfYahtzee = w.Throws.Count
+                    })
+                    .OrderBy(w => w.NumberOfDices)
+                    .ToList()
             };
         }
 
-
         public YahtzeeListViewModel GetYahtzeeListViewModel()
         {
-            List<string> yahtzees = BuildYahtzeesCombinations();
-
-            var dict = _ctx
-                .Throws
-                .Where(q => yahtzees.Contains(q.Result))
-                .Select(q => new ThrowDto
+            List<YahtzeeDto> dict = _ctx
+                .Set<YahtzeeResult>()
+                .FromSqlRaw("EXEC [dbo].[GetYahtzees]")
+                .ToList()
+                .GroupBy(q => q.ThrowId)
+                .GroupBy(q => q.Count())
+                .Select(q => new YahtzeeDto(q.Select(w => new ThrowDto
                 {
-                    Id = q.Id,
-                    Result = q.Result,
-                    Date = q.DateCreated,
-                    ImageUrl = q.ImageUrl,
-                    VideoUrlWebm = q.VideoUrl,
-                    VideoUrlMp4 = q.VideoUrl,
-                    RollNumber = q.ThrowNumber
-                })
-                .AsEnumerable()
-                .GroupBy(q => q.Result.Length)
-                .Select(q => new YahtzeeDto(q.ToList(), q.Key))
+                    Result = string.Join("", w.Select(e => e.Prediction.ToString())),
+                    Date = w.First().DateCreated,
+                    Id = w.First().ThrowId
+                }).ToList(), q.Key))
                 .ToList();
 
             for (int i = 5; i < 8; i++)
@@ -90,10 +81,10 @@ namespace AutoYahtzee.Business
         {
             var query = _ctx
                 .Throws
-                .Where(q => !string.IsNullOrEmpty(q.Result))
+                .Where(q => q.Predictions.Any())
                 .OrderByDescending(q => q.DateCreated);
 
-            var data = PaginatedList<Throw>
+            var data = PaginatedList<Throws>
                 .Create(query, page, Consts.PAGE_SIZE);
 
             return new ThrowListViewModel(data);
@@ -106,30 +97,20 @@ namespace AutoYahtzee.Business
                 .Where(q => q.Id == id)
                 .Select(q => new ThrowDto
                 {
+                    Result = string.Join("", q.Predictions.OrderBy(w => w.Prediction).Select(e => e.Prediction.ToString())),
                     Id = q.Id,
-                    Result = q.Result,
                     Date = q.DateCreated,
-                    ImageUrl = q.ImageUrl,
-                    VideoUrlWebm = q.VideoUrl,
-                    VideoUrlMp4 = q.VideoUrl,
-                    RollNumber = q.ThrowNumber
+                    RollNumber = q.ThrowNumber,
+                    Predictions = q.Predictions.Select(w => new PredictionDto
+                    {
+                        Confidence = w.Confidence,
+                        Id = w.Id,
+                        Prediction = w.Prediction
+                    })
+                    .OrderBy(w => w.Prediction)
+                    .ToList()
                 })
                 .FirstOrDefault();
-        }
-
-        private List<string> BuildYahtzeesCombinations()
-        {
-            List<string> yahtzees = new List<string>();
-
-            for (int i = 5; i < 8; i++)
-            {
-                for (int j = 1; j < 7; j++)
-                {
-                    yahtzees.Add(string.Join(string.Empty, Enumerable.Repeat(j.ToString(), i)));
-                }
-            }
-
-            return yahtzees;
         }
     }
 }

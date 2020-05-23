@@ -9,22 +9,36 @@
 
     <div class="row">
         <div class="col-md-7">
-            <video id="my-player"
-                   class="video-js vjs-big-play-centered"
-                   controls=""
-                   preload="auto"
-                   poster="@Model.ImageUrl"
-                   data-setup='{"fluid":true}'>
-                <source src="@Model.VideoUrlWebm" type="video/webm" />
-                <source src="@Model.VideoUrlMp4" type="video/mp4" />
-                <p class="vjs-no-js">
-                    To view this video please enable JavaScript, and consider upgrading to a
-                    web browser that
-                    <a href="https://videojs.com/html5-video-support/" target="_blank">
-                        supports HTML5 video
-                    </a>
-                </p>
-            </video>
+            <div>
+                <video id="my-player"
+                       class="video-js vjs-big-play-centered"
+                       controls=""
+                       preload="auto"
+                       poster="@Model.ImageUrl"
+                       data-setup='{"fluid":true}'>
+                    <source src="@Model.VideoUrlWebm" type="video/webm" />
+                    <source src="@Model.VideoUrlMp4" type="video/mp4" />
+                    <p class="vjs-no-js">
+                        To view this video please enable JavaScript, and consider upgrading to a
+                        web browser that
+                        <a href="https://videojs.com/html5-video-support/" target="_blank">
+                            supports HTML5 video
+                        </a>
+                    </p>
+                </video>
+            </div>
+            <div class="prediction-wrapper">
+                <ul>
+                    @foreach (var prediction in Model.Predictions)
+                    {
+                    <li class="shadow-sm">
+                        <span data-toggle="tooltip" data-placement="top" title="Model is @prediction.Confidence.ToString("0.##")% confident that the outcome of the die is @prediction.Prediction">
+                            <img src="@prediction.Image" alt="Prediction Image" />
+                        </span>
+                    </li>
+                    }
+                </ul>
+            </div>
         </div>
         <div class="col-md-5">
             <ul class="list-group mb-4">

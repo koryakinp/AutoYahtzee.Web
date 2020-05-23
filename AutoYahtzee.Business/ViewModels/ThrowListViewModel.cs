@@ -14,17 +14,14 @@ namespace AutoYahtzee.Business.ViewModels
         public bool HasNext { get; private set; }
         public bool HasPrev { get; private set; }
 
-        public ThrowListViewModel(PaginatedList<Throw> throws)
+        public ThrowListViewModel(PaginatedList<Throws> throws)
         {
             Throws = throws
                 .Select(q => new ThrowDto
                 {
                     Id = q.Id,
-                    Result = q.Result,
+                    Result = string.Join("", q.Predictions.OrderBy(w => w).Select(w => w.ToString())),
                     Date = q.DateCreated,
-                    ImageUrl = q.ImageUrl,
-                    VideoUrlWebm = q.VideoUrl,
-                    VideoUrlMp4 = q.VideoUrl,
                     RollNumber = q.ThrowNumber
                 })
                 .ToList();

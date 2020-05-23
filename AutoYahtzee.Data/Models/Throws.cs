@@ -1,17 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AutoYahtzee.Data.Models
 {
-    public partial class Throw
+    public partial class Throws
     {
+        public Throws()
+        {
+            Predictions = new HashSet<Predictions>();
+        }
+
         public Guid Id { get; set; }
         public DateTime DateCreated { get; set; }
-        public string Result { get; set; }
-        public Guid ExperimentId { get; set; }
-        public string VideoUrl { get; set; }
-        public string ImageUrl { get; set; }
-        public int ThrowNumber { get; internal set; }
-        public DateTime? ResultProcessedDate { get; set; }
-        public virtual Experiment Experiment { get; set; }
+        public int ThrowNumber { get; set; }
+
+        public virtual ICollection<Predictions> Predictions { get; set; }
     }
 }

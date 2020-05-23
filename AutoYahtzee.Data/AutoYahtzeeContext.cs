@@ -1,7 +1,5 @@
-﻿using System;
-using AutoYahtzee.Data.Models;
+﻿using AutoYahtzee.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace AutoYahtzee.Data
 {
@@ -16,56 +14,33 @@ namespace AutoYahtzee.Data
         {
         }
 
-        public virtual DbSet<Experiment> Experiments { get; set; }
-        public virtual DbSet<Throw> Throws { get; set; }
+        public virtual DbSet<Predictions> Predictions { get; set; }
+        public virtual DbSet<Throws> Throws { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Experiment>(entity =>
+            modelBuilder.Entity<Predictions>(entity =>
             {
-                entity.ToTable("Experiments");
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
-
-                entity.Property(e => e.DateStarted)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getutcdate())");
-
-                entity.Property(e => e.Description).IsUnicode(false);
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.HasOne(d => d.Throw)
+                    .WithMany(p => p.Predictions)
+                    .HasForeignKey(d => d.ThrowId)
+                    .HasConstraintName("FK_Predictions_ToTableThrows");
             });
 
-            modelBuilder.Entity<Throw>(entity =>
+            modelBuilder.Entity<Throws>(entity =>
             {
-                entity.ToTable("Throws");
-                entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.DateCreated)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getutcdate())");
 
-                entity.Property(e => e.ImageUrl).IsUnicode(false);
-
-                entity.Property(e => e.Result)
-                    .HasMaxLength(10)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.ResultProcessedDate).HasColumnType("datetime");
-
-                entity.Property(e => e.VideoUrl).IsUnicode(false);
-
-                entity.Property(e => e.ThrowNumber).HasColumnType("INT");
-
-                entity.HasOne(d => d.Experiment)
-                    .WithMany(p => p.Throws)
-                    .HasForeignKey(d => d.ExperimentId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Throws_ToTableExperiments");
+                entity.Property(e => e.ThrowNumber).ValueGeneratedOnAdd();
             });
+
+            modelBuilder.Entity<YahtzeeResult>().HasNoKey().ToView(null);
 
             OnModelCreatingPartial(modelBuilder);
         }

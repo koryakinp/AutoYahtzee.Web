@@ -2,4 +2,19 @@
     .download-roll a {
         color: black !important;
     }
+
+    .prediction-wrapper {
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+
+            li {
+                border: solid 1px black;
+                box-shadow: grey 0px 0px 5px;
+            }
+        }
+    }
 }
