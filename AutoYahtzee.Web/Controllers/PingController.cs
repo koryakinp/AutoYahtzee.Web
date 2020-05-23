@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoYahtzee.Data;
+using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace AutoYahtzee.Web.Controllers
 {
@@ -6,9 +8,18 @@ namespace AutoYahtzee.Web.Controllers
     [ApiController]
     public class PingController : ControllerBase
     {
+        private readonly AutoYahtzeeContext _ctx;
+        public PingController(AutoYahtzeeContext ctx)
+        {
+            _ctx = ctx;
+        }
+
         public IActionResult Ping()
         {
-            return new OkResult();
+            return new ContentResult()
+            {
+                Content = _ctx.Throws.Count().ToString()
+            };
         }
     }
 }
