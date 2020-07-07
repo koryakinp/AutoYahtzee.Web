@@ -28,12 +28,12 @@
                 </video>
             </div>
             <div class="prediction-wrapper">
-                <ul>
+                <ul id="prediction-wrapper">
                     @foreach (var prediction in Model.Predictions)
                     {
                     <li class="shadow-sm">
                         <span data-toggle="tooltip" data-placement="top" title="Model is @prediction.Confidence.ToString("0.##")% confident that the outcome of the die is @prediction.Prediction">
-                            <img src="@prediction.Image" alt="Prediction Image" />
+                            <img class="prediction-image" src="@prediction.Image" alt="Prediction Image" />
                         </span>
                     </li>
                     }

@@ -124,3 +124,20 @@ if (document.getElementById('contact-form')) {
     }
 }
 
+if (document.getElementById('prediction-wrapper')) {
+    var wrapperWidth = parseInt(getComputedStyle(document.getElementById("prediction-wrapper")).width);
+    var numberOfImages = document.getElementsByClassName('prediction-image').length;
+
+    if (wrapperWidth < numberOfImages * 50) {
+        var targetImageWidth = Math.round((wrapperWidth / numberOfImages) - (numberOfImages - 1) * 2);
+
+        var images = document.getElementsByClassName('prediction-image');
+
+        for (var i = 0; i < images.length; i++) {
+            images[i].style.width = targetImageWidth + 'px';
+            images[i].style.height = targetImageWidth + 'px';
+        }
+    }
+}
+
+
