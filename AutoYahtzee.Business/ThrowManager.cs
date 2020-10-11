@@ -79,9 +79,11 @@ namespace AutoYahtzee.Business
 
         public ThrowListViewModel GetThrowListViewModel(int page)
         {
+            DateTime d = DateTime.UtcNow.AddMinutes(-15);
+
             var query = _ctx
                 .Throws
-                .Where(q => q.Predictions.Any())
+                .Where(q => q.DateCreated < d)
                 .OrderByDescending(q => q.DateCreated);
 
             var data = PaginatedList<Throws>
